@@ -21,9 +21,9 @@ app.use((req, res, next)=>{
 	next();
 });
 
-app.use((req, res, next)=>{
-	res.render('maintenance.hbs');
-})
+// app.use((req, res, next)=>{
+// 	res.render('maintenance.hbs');
+// })
 
 app.use(express.static(__dirname + '/public'));
 
@@ -33,6 +33,12 @@ hbs.registerHelper('getCurrentYear', ()=>{
 
 hbs.registerHelper('screamIt', (text)=>{
 	return text.toUpperCase()
+});
+
+app.get('/projects', (req, res)=>{
+	res.render('projects.hbs', {
+		message: 'You are in the projects. Now get the fuck out.'
+	});
 });
 
 app.get('/', (req, res)=>{
